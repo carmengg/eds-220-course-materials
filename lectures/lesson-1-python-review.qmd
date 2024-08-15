@@ -1,12 +1,19 @@
 # Python Review
 
-This is a short reveiw about some core concepts in Python exemplified by objects in the `numpy` library. 
+This is a short reveiw about some core concepts in Python exemplified by objects in the `numpy` library. The goal is to recall basic Python vocabulary that will be used throughout the course, rather than to serve as an introduction to Python programming. 
 
-## `numpy`
+## Learning objectives
+By the end of this unit, students will be able to 
 
-NumPy is one of the core packages for numerical computing in Python. Many of the packages we will use in this course use NumPy's arrays as their building blocks. Additionally, numpy objects have been optimized for processing, so computations on them are really fast and use less memory than doing the equivalent using base Python. 
+- Define basic terms in Python programming like variable, object, function, class, attribute, and method.
+- Recognize optional and non-optional arguments in a function.
+- Identify some of the basic differences in R and Python syntax.
 
-In this lesson we will use `numpy` to review some core concepts in Python you're already familiar with. 
+## NumPy
+
+NumPy is one of the core packages for numerical computing in Python. Many of the packages we will use in this course use NumPy's arrays as their building blocks. Additionally, NumPy objects have been optimized for processing, so computations on them are really fast and use less memory than doing the equivalent using the core Python data structures. 
+
+In this lesson we will use NumPy to review some core concepts in Python you should be already familiar with. 
 
 First, let's start by importing the library:
 
