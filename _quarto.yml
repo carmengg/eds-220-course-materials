@@ -50,8 +50,7 @@ book:
         - lectures/lesson-18-STAC.qmd
         - discussion-sections/ds5-modis-ndvi.qmd
         - lectures/lesson-22-make_a_gif.qmd
-        
-      
+    - references.qmd  
   appendices:
     - appendices/set-pat.qmd
     - appendices/gitignore_untrack.qmd
@@ -59,7 +58,10 @@ book:
 
 execute:
   freeze: auto  # re-render only when source changes
-  
+
 format:
   html:
     theme: cosmo
+
+bibliography: references.bib
+csl: ieee-with-url.csl

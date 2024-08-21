@@ -1,4 +1,4 @@
-# Environment setup
+# Environment setup {.unnumbered}
 
 To install the libraries needed to execute the code in these notes you can create a conda environment using the `environment.yml` file in the notes repository. 
 

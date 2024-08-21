@@ -1,26 +1,27 @@
-# Python Review
+# Python Review {.unnumbered}
 
-This is a short reveiw about some core concepts in Python exemplified by objects in the `numpy` library. The goal is to recall basic Python vocabulary that will be used throughout the course, rather than to serve as an introduction to Python programming. 
+This is a short review about some core concepts in Python exemplified by objects in the NumPy library. The goal is to recall basic Python vocabulary that will be used throughout the course, rather than to serve as an introduction to Python programming. 
 
 ## Learning objectives
 By the end of this unit, students will be able to 
 
 - Define basic terms in Python programming like variable, object, function, class, attribute, and method.
 - Recognize optional and non-optional arguments in a function.
-- Identify some of the basic differences in R and Python syntax.
+- Understand some of the basic differences in R and Python syntax.
 
 ## NumPy
 
-NumPy is one of the core packages for numerical computing in Python. Many of the packages we will use in this course use NumPy's arrays as their building blocks. Additionally, NumPy objects have been optimized for processing, so computations on them are really fast and use less memory than doing the equivalent using the core Python data structures. 
+NumPy [@harris2020array] is one of the core packages for numerical computing in Python. Many of the packages we will use in this course use NumPy's arrays as their building blocks. Additionally, NumPy objects have been optimized for processing, so computations on them are really fast and use less memory than doing the equivalent using the core Python data structures. 
 
-In this lesson we will use NumPy to review some core concepts in Python you should be already familiar with. 
+In this lesson we will use NumPy to review some fundamental concepts in Python you should be already familiar with. 
 
-First, let's start by importing the library:
+First, let's start by importing the library. The package name in Python is `numpy` the standard is to abbreviate ias `np`:
 
 ```{python}
 import numpy as np
 ```
 
+By importing `numpy`, all the objects and functions in this package will be available for us to use in our notebook.
 
 ## Variables
 We can think of a **variable** as a name we assign to a particular object in Python. For example:
@@ -30,7 +31,7 @@ We can think of a **variable** as a name we assign to a particular object in Pyt
 a = np.array([[1,1,2],[3,5,8]])
 ```
 
-When we run the cell, we store the variables and their value. We can view a variable's value in two ways:
+When we run the cell, we store the variables and their value. We can view a variable's value in two ways from within our Jupyter notebook:
 
 1. running a cell with the variable name
 
@@ -48,21 +49,30 @@ print(a)
 
 
 :::{.callout-note}
-## R and Python
+## R and Python: assigning values
 
-In Python we use the equal sign `=` to assign values to variables in the same way the left-arrow `<-` is used in R.
+Remember that in Python we use the equal sign `=` to assign values to variables in the same way the left-arrow `<-` is used in R:
+``` R
+# R: assign value 10 to variable a
+a <- 10
+```
+
+``` R
+# python: assign value 10 to variable a
+a = 10
+```
 :::
 
 ::: {.callout-caution}
-## Naming Variables
+## Convention: Use `snake_case` for naming variables
 
-There are many ways of constructing multi-word variable names. In this course we will name variables using **snake_case**, where words are all in small caps and separated by underscores (ex: `my_variable`). This is the naming convention suggested by the [Style Guide for Python Code](https://peps.python.org/pep-0008/).
+There are many ways of constructing multi-word variable names. In this course we will name variables using **snake_case**, where words are all in small caps and separated by underscores (ex: `raw_data`, `fires_2023`). This is the naming convention suggested by the [PEP 8 - Style Guide for Python Code](https://peps.python.org/pep-0008/#function-and-variable-names) [@pep8]. **Remember variable names should be both descriptive and concise!**
 :::
 
 ## Variables and Objects
 You will often encounter the word **object** in Python documentation and tutorials. Informally speaking, an object is a bundle of *properties* and *actions* about something specific. For example, an object could represent a data frame with properties such as number of rows, names of columns, and date created, and actions suchs as selecting a specific row or adding a new column. 
 
-A variable is the name we give a specific object, and the same object can be referenced by different variables. An analogy for this is the following: the Sun (object) is called "sol" in Spanish and "soleil" in French, so two different names (variables) represent the same object. You can read more technical details about the [difference between objects and variables in Python here](https://realpython.com/python-variables/#object-references).
+A variable is the name we give a specific object, and the same object can be referenced by different variables. An analogy for this is the following: the Sun (object) is called "sol" in Spanish and "soleil" in French, so two different names (variables) represent the same object. You can read more technical details about the [difference between objects and variables in Python here](https://realpython.com/python-variables/#object-references) [@sturtz_variables_nodate].
 
 In practice, we can often use the word variable and object interchangeably. I want to bring up what objects are so you're not caught off-guard with vocabulary you'll often encounter in the documentation, StackExchange, etc. We'll often use the word object too (for example, in the next subsection!).
 
