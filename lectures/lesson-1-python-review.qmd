@@ -1,4 +1,8 @@
-# Python Review {.unnumbered}
+---
+toc-title: In this lesson
+---
+
+# Python review {.unnumbered}
 
 This is a short review about some core concepts in Python exemplified by objects in the NumPy library. The goal is to recall basic Python vocabulary that will be used throughout the course, rather than to serve as an introduction to Python programming. 
 
@@ -9,19 +13,24 @@ By the end of this unit, students will be able to
 - Recognize optional and non-optional arguments in a function.
 - Understand some of the basic differences in R and Python syntax.
 
-## NumPy
+## Libraries and packages
 
-NumPy [@harris2020array] is one of the core packages for numerical computing in Python. Many of the packages we will use in this course use NumPy's arrays as their building blocks. Additionally, NumPy objects have been optimized for processing, so computations on them are really fast and use less memory than doing the equivalent using the core Python data structures. 
+A **library** is a collection of code that we can use to perform specific tasks in our programs. It can be a single file or multiple ones. NumPy [@harris2020array] is one of the core libraries for numerical computing in Python. Many of the libraries we will use in this course use NumPy's arrays as their building blocks. Additionally, NumPy objects have been optimized for processing, so computations on them are really fast and use less memory than doing the equivalent using the core Python data structures. 
 
 In this lesson we will use NumPy to review some fundamental concepts in Python you should be already familiar with. 
 
-First, let's start by importing the library. The package name in Python is `numpy` the standard is to abbreviate ias `np`:
+::: {.callout-caution}
+## Library or package?
+A **package** in Python refers to a specific way of organizing multiple files of code into a directory hierarcy, often within a large code library. The words "library" and "package" are often used interchangeably. NumPy, for example, is both a library and a package. 
+:::
+
+Let's start by importing the NumPy library by using the standard to abbreviation, `np`:
 
 ```{python}
 import numpy as np
 ```
 
-By importing `numpy`, all the objects and functions in this package will be available for us to use in our notebook.
+By importing `numpy`, all the objects and functions in this library will be available for us to use in our notebook.
 
 ## Variables
 We can think of a **variable** as a name we assign to a particular object in Python. For example:
@@ -69,16 +78,16 @@ a = 10
 There are many ways of constructing multi-word variable names. In this course we will name variables using **snake_case**, where words are all in small caps and separated by underscores (ex: `raw_data`, `fires_2023`). This is the naming convention suggested by the [PEP 8 - Style Guide for Python Code](https://peps.python.org/pep-0008/#function-and-variable-names) [@pep8]. **Remember variable names should be both descriptive and concise!**
 :::
 
-## Variables and Objects
+## Objects
 You will often encounter the word **object** in Python documentation and tutorials. Informally speaking, an object is a bundle of *properties* and *actions* about something specific. For example, an object could represent a data frame with properties such as number of rows, names of columns, and date created, and actions suchs as selecting a specific row or adding a new column. 
 
 A variable is the name we give a specific object, and the same object can be referenced by different variables. An analogy for this is the following: the Sun (object) is called "sol" in Spanish and "soleil" in French, so two different names (variables) represent the same object. You can read more technical details about the [difference between objects and variables in Python here](https://realpython.com/python-variables/#object-references) [@sturtz_variables_nodate].
 
-In practice, we can often use the word variable and object interchangeably. I want to bring up what objects are so you're not caught off-guard with vocabulary you'll often encounter in the documentation, StackExchange, etc. We'll often use the word object too (for example, in the next subsection!).
+In practice, we can often use the word variable and object interchangeably (for example, in the next subsection!). I want to bring up what objects are so you are not caught off-guard with vocabulary you will often encounter in the documentation, StackExchange, etc. 
 
 ## Types
 
- Every object in Python has a **type**, the type tells us what kind of object it is. We can also call the type of an object, the **class** of an object (so class and type both mean what kind of object we have). 
+ Every object in Python has a **type**, the type tells us what kind of object it is. We can also call the type of an object, the **class** of an object, so class and type both mean what kind of object we have. 
  
  We can see the type/class of a variable/object by using the `type` function:
 
@@ -87,40 +96,48 @@ print(a)
 type(a)
 ```
 
-The `numpy.ndarray` is the core object/data type in the NumPy pakcage. We can check the type of an entry in the array by indexing:
+The `numpy.ndarray` is the core object/data type in the NumPy package. We can check the type of an entry in the array by indexing:
 
 ```{python}
 print(a[0,0])
 type(a[0,0])
 ```
 
-::: {.callout-tip}
-## Check-in
-How would you access the value 5 in the array `a`? **Remember indexing in Python starts from 0!**
+Notice the type of the value 1 in the array is `numpy.int64` and not just the standard Python integer type `int`. 
+The NumPy type `numpy.int64` is telling us 1 is an integer stored as a 64-bit number. NumPy has its own data types to deal with numbers depending on memory storage and floating point precision, [click here to know see all the types](https://numpy.org/doc/stable/reference/arrays.scalars.html#sized-aliases). 
+
+:::{.callout-note}
+## R and Python: indexing
+
+Remember that **in Python the indexing starts from 0, while in R it starts from 1**. If you learned R first, this might seem odd but it's easy to get used to it with some practice. A way to understand this 0-indexing is that, in Python, the index indicates the *displacement* from the start of the collection. So '0 index in an array' means 'zero displacement from the start of the array', in other words, the first element of the array. 
 :::
 
-Notice the type of the value 1 in the array is `numpy.int64` and not just the core Python integer type `int`. The NumPy type `numpy.int64` is telling us 1 is an integer stored as a 64-bit number. NumPy has its own data types to deal with numbers depending on memory storage and floating point precision, [click here to know see all the types](https://numpy.org/doc/stable/reference/arrays.scalars.html#sized-aliases). 
+::: {.callout-tip}
+## Check-in
+How would you access the value 5 in the array `a`?
+:::
 
-Since "everything in Python is an object" and every object has a class, we will interact with SO MANY classes in this course. Often, knowing the type of an object is the first step to finding information to code what you want!
+Since "everything in Python is an object" and every object belongs to a class, we will interact with SO MANY classes in this course. Often, knowing the type of an object is the first step to finding information to code what you want!
 
 ## Functions
 
-`print` was our first example of a Python **function**. Functions take in a set of **arguments**, separated by commas, and use those arguments to create some **output**. There are several built-in funcions in Python, most of them are for interacting with the basic Python data types. You can see a [list of them here](https://realpython.com/python-data-types/#built-in-functions).
+`print` was our first example of a Python **function**. Functions take in a set of **arguments**, separated by commas, and use those arguments to create an **output**. There are several built-in funcions in Python,  most of them are for interacting with the Python basic data types such as `int` (integers), `float` (decimal numbers), `str` (strings), and `bool` (boolean values).
 
 ::: {.callout-caution}
 ## Argument or Parameter?
-We can interchangeably say arguments or parameters. You will see argument more often in the documentation.
+We can interchangeably say arguments or **parameters**. You will see argument more often in the documentation.
 :::
 
-We can ask for information about a function by executing `?` followed by the function name:
+We can ask for information about what a function does function by executing `?` followed by the function name:
 
 ```{python}
 ?print
 ```
 
-![](/images/lesson-1/print_docstring.png)
+![](/images/lesson-1/print-docstring.png)
 
-The first line is always the function showing all of its arguments in parenthesis. 
+What we obtain is a **docstring**, a special type of comment that is used to document how a function (or class, or module) works. 
+The first line in the docstring is telling us the function name followed by all of its arguments in parentheses. 
 Then there is a short description of what the function does.
 And finally a list of the arguments and a brief explanation about each of them.
 
@@ -130,20 +147,22 @@ You can see there are different types of arguments inside the parenthesis. Rough
 
 - **optional arguments**: arguments that are pre-filled with a default value by the function, but you can override them. Optional arguments appear inside the parenthesis () in the form `optional_argument = default_value`. 
 
-**Example:**
+### Example {.unlisted}
 
 `end` is an argument in `print` with the default value a new line. We can change this argument so that finishes the line with ` ^_^` instead:
 
 ```{python}
-# notice we had always used print withough specifying any value for the `end` argument
-print('I am changing the default end argument of the print function', end=' ^_^')
+print('changing the default end argument of the print function', end=' ^_^')
 ```
 
-## Attributes & Methods
+Notice that before we had always used print without specifying any value for the `end` argument.
+
+
+## Attributes & methods
 
 An object in Python has attributes and methods. An **attribute** is a property of the object, some piece of information about it. A **method** is a procedure associated with an object, so it is an action where the main ingredient is the object. 
 
-For example, these could be some attributes and methods a class `cat`:
+For example, these could be some attributes and methods for class `cat`:
 
 ![. ](/images/lesson-1/cat_class.png){width=45%}
 
@@ -157,45 +176,45 @@ We can access a variable's attributes and methods by adding a period `.` at the 
 Suppose we have a class `fish`, make a diagram similar to the `cat` class diagram showing 3 attributes for the class and 3 methods.
 :::
 
-**Example**
+### Example {.unlisted}
 
 NumPy arrays have many methods and attributes. Let's see some concrete examples.
 
 ```{python}
-# define a 3x3 array
+# a 3x3 array
 var = np.array([[1,2,3],[4,5,6],[7,8,9]])
 var
 ```
 
+`T` is an example of attribute, it returns the transpose of `var`:
 ```{python}
-# T is an example of attribute, it returns the transpose of var
 print(var.T)
 print(type(var.T))
 ```
 
+`shape`, another attribute, tells us the shape of the array:
 ```{python}
-# shape, another attribute, tells us the shape of the array (3x3)
 print(var.shape)
 print(type(var.shape))
 ```
 
+`ndim` is an attribute holding the number of array dimensions
 ```{python}
-# ndim is an attribute holding the number of array dimensions
 print(var.ndim)
 print(type(var.ndim))
 ```
 
-Notice these attributes can have many different data types. Here we saw tuples and int, two of the core Python classes, and also a numpy array as attributes of `var`. 
+Notice these attributes can have many different data types. Here we saw a `tuple` and an `int` (two of the basic Python classes) and also a NumPy array as attributes of `var`. 
 
-Now some examples of methods:
+Now some examples of methods.
 
+The `tolist` method returns the array as a nested list of scalars:
 ```{python}
-# the tolist method returns the array as a nested list of scalars
 var.tolist()
 ```
 
+The `min` method returns the minimum value in the array along a specified axis:
 ```{python}
-# the min method returns the minimum value in the array along an axis
 var.min(axis=0)
 ```
 
@@ -211,7 +230,7 @@ var.min()
 What kind of parameter is `axis` in our previous call of the `var` method?
 :::
 
-Remember, methods are functions associated to an object. We can check this!
+Remember, methods are functions associated to an object. We can confirm this!
 
 ```{python}
 type(var.tolist)
@@ -221,12 +240,12 @@ type(var.tolist)
 type(var.min)
 ```
 
-You can see a complete list of [NumPy array's methods and attributes in the documentation](https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html).
+You can see a complete list of [NumPy array's methods and attributes](https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html) in the documentation.
 
 :::{.callout-note}
-## R and Python
+## R and Python: are there methods in R?
 
-In R we don't use methods within an object. Rather, functions are extrinsic to (outside) the objects they are acting on.  In R, for example, there would be two separate items: the variable `var` and a separate function `min` that gets `var` as a parameter:
+In R it's uncommon to use methods within an object. Rather, functions are extrinsic to the objects they are acting on.  In R, for example, there would usually be two separate items: the variable `var` and a separate function `min` that gets `var` as a parameter:
 
 ``` R
 # this is R code
@@ -242,7 +261,7 @@ var <- array(c(1,4,7,2,5,8,3,6,9), dim =c(3,3))
 var %>% min()
 ```
 
-What happens here is that the pipe `%>%` is passing `var` to the `min()` function as its first argument. This is essentially what happens in Python when a function is a method of a class:
+What happens here is that the pipe `%>%` is passing `var` to the `min()` function as its first argument. This is similar to what happens in Python when a function is a method of a class:
 
 ``` python
 # this is Python code

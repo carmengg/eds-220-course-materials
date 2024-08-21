@@ -62,6 +62,6 @@ execute:
 format:
   html:
     theme: cosmo
-
+    
 bibliography: references.bib
-csl: ieee-with-url.csl
+csl: ieee-with-url.csl # citation style
